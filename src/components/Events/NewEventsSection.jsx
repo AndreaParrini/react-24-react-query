@@ -8,7 +8,9 @@ import { fetchEvents } from '../../util/http.js';
 export default function NewEventsSection() {
   const{data, isPending, isError, error}=useQuery({
     queryKey: ['events'],
-    queryFn: fetchEvents
+    queryFn: fetchEvents,
+    staleTime: 5000, // il tempo che react query aspetterà rpima di mandare una nuova richiesta per i dati aggiornati, così aspetterà 5000 millesecondi prima di mandare la nuova richiesta, di default è 0;
+    // gcTime: 1000 si intende il tempo con il quale i dati rimangono memorizzati nella cache, passato quel tempo vengo rimossi dalla cache, il tempo di default è 5 min;
   })
 
   let content;
