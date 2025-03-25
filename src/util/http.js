@@ -4,7 +4,6 @@ export const queryClient = new QueryClient();
 
 
 export async function fetchEvents({ signal, searchTerm }) {
-  console.log(searchTerm);
   let url = 'http://localhost:3000/events';
 
   if (searchTerm) {
@@ -63,8 +62,7 @@ export async function fetchSelectableImages({ signal }) {
 }
 
 export async function fetchEvent({ id, signal }) {
-  console.log(id.id)
-  const response = await fetch(`http://localhost:3000/events/${id.id}`, { signal });
+  const response = await fetch(`http://localhost:3000/events/${id}`, { signal });
 
   if (!response.ok) {
     const error = new Error('An error occurred while fetching the event');
